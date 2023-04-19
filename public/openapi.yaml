@@ -1,0 +1,301 @@
+openapi: 3.0.1
+info:
+  title: Googling Plugin
+  description: A plugin that allows you to search anything from Google.
+  version: 'v1'
+servers:
+  - url: https://googling-plugins.appledore.dev
+paths:
+  /search:
+    post:
+      operationId: search
+      summary: Search anything from Google
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/searchRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchResponse'
+components:
+  schemas:
+    searchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                description: The title of the search result
+              description:
+                type: string
+                description: The description of the search result
+              url:
+                type: string
+                format: uri
+                description: The URL of the search result
+              is_sponsored:
+                type: boolean
+                description: Whether the search result is sponsored
+              favicons:
+                type: object
+                properties:
+                  high_res:
+                    type: string
+                    format: uri
+                    description: The URL of the high-resolution favicon of the search result
+                  low_res:
+                    type: string
+                    format: uri
+                    description: The URL of the low-resolution favicon of the search result
+            required:
+              - title
+              - description
+              - url
+        videos:
+          type: array
+          items:
+            type: object
+            properties: {}
+        knowledge_panel:
+          type: object
+          properties:
+            type:
+              type: string
+              description: The type of the knowledge panel
+            title:
+              type: string
+              description: The title of the knowledge panel
+            description:
+              type: string
+              description: The description of the knowledge panel
+            url:
+              type: string
+              format: uri
+              description: The URL of the knowledge panel
+            metadata:
+              type: array
+              items:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    description: The title of the metadata
+                  value:
+                    type: string
+                    description: The value of the metadata
+            books:
+              type: array
+              items:
+                type: object
+                properties: {}
+            tv_shows_and_movies:
+              type: array
+              items:
+                type: object
+                properties: {}
+            ratings:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the rating system
+                  rating:
+                    type: string
+                    description: The rating value
+            available_on:
+              type: array
+              items:
+                type: object
+                properties: {}
+            images:
+              type: array
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    format: uri
+                    description: The URL of the image
+                  source:
+                    type: string
+                    format: uri
+                    description: The URL of the image source
+            songs:
+              type: array
+              items:
+                type: object
+                properties: {}
+            demonstration:
+              type: object
+              properties: {}
+            lyrics:
+              type: object
+              properties: {}
+        featured_snippet:
+          type: object
+          properties:
+            title:
+              type: string
+              description: The title of the featured snippet
+            description:
+              type: string
+              description: The description of the featured snippet
+            url:
+              type: string
+              format: uri
+              description: The URL
+        did_you_mean:
+          type: string
+          description: The suggested query
+        weather:
+          type: object
+          properties:
+            location:
+              type: string
+              description: The location of the weather
+            forecast:
+              type: string
+              description: The forecast of the weather
+            precipitation:
+              type: string
+              description: The precipitation of the weather
+            humidity:
+              type: string
+              description: The humidity of the weather
+            temperature:
+              type: string
+              description: The temperature of the weather
+            wind:
+              type: string
+              description: The wind of the weather
+        time:
+          type: object
+          properties:
+            hours:
+              type: string
+              description: The hours of the time
+            date:
+              type: string
+              description: The date of the time
+        location:
+          type: object
+          properties:
+            title:
+              type: string
+              description: The title of the location
+            distance:
+              type: string
+              description: The distance of the location
+            map:
+              type: string
+              description: The map of the location
+        dictionary:
+          type: object
+          properties:
+            word:
+              type: string
+              description: The word of the dictionary
+            phonetic:
+              type: string
+              description: The phonetic of the dictionary
+            audio:
+              type: string
+              description: The audio of the dictionary
+            definitions:
+              type: array
+              items:
+                type: object
+                properties:
+                  definition:
+                    type: string
+                    description: The definition of the dictionary
+                  part_of_speech:
+                    type: string
+                    description: The part of speech of the dictionary
+                  example:
+                    type: string
+                    description: The example of the dictionary
+                required:
+                  - definition
+                  - part_of_speech
+            examples:
+              type: array
+              items:
+                type: object
+                properties:
+                  example:
+                    type: string
+                    description: The example of the dictionary
+                  translation:
+                    type: string
+                    description: The translation of the dictionary
+                required:
+                  - example
+                  - translation
+        translation:
+          type: object
+          properties:
+            source_language:
+              type: string
+              description: The source language of the translation
+            target_language:
+              type: string
+              description: The target language of the translation
+            source_text:
+              type: string
+              description: The source text of the translation
+            target_text:
+              type: string
+              description: The target text of the translation
+        top_stories:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                description: The description of the top story
+              url:
+                type: string
+                format: uri
+                description: The URL of the top story
+        unit_converter:
+          type: object
+          properties:
+            input:
+              type: string
+              description: The input of the unit converter
+            output:
+              type: string
+              description: The output of the unit converter
+            formula:
+              type: string
+              description: The formula of the unit converter
+        people_also_ask:
+          type: array
+          items:
+            type: string
+            description: The question of the people also ask
+        people_also_search:
+          type: array
+          items:
+            type: string
+            description: The query of the people also search
+    searchRequest:
+      type: object
+      properties:
+        q:
+          type: string
+          description: The query to search for.

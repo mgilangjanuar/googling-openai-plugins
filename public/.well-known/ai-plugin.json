@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Googling",
+  "name_for_model": "googling",
+  "description_for_human": "Plugin for getting Google search results. You can search for anything you want.",
+  "description_for_model": "Plugin for getting Google search results. You can search for anything you want.",
+  "auth": {
+      "type": "none"
+  },
+  "api": {
+      "type": "openapi",
+      "url": "https://googling-plugins.appledore.dev/openapi.yaml",
+      "is_user_authenticated": false
+  },
+  "logo_url": "https://googling-plugins.appledore.dev/logo.png",
+  "contact_email": "gilang@bahasa.ai",
+  "legal_info_url": "http://www.example.com/legal"
+}
