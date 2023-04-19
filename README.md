@@ -7,7 +7,7 @@ An OpenAI plugin that allows you to search Google for the latest news, article, 
 Clone the repository and install the dependencies.
 
 ```bash
-git clone && \
+git clone git@github.com:mgilangjanuar/googling-openai-plugins.git && \
 yarn
 ```
 
